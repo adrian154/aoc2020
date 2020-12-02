@@ -1,0 +1,1 @@
+console.log(String(require("fs").readFileSync("../data.txt")).split("\n").map(str => ({A: Number(str.substr(0, str.indexOf("-"))), B: Number(str.match(/-\d*/)[0].substr(1)), char: str[str.indexOf(":") - 1], pw: str.substr(str.indexOf(":") + 2, str.length)})).reduce((accum, cur) => accum + Number((cur.pw[cur.A - 1] == cur.char) ^ (cur.pw[cur.B - 1] == cur.char)), 0));
